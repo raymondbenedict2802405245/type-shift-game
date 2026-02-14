@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "Type Shift Game Project.sln"
+    "dotnet.defaultSolution": "shifting standoff.sln"
 }

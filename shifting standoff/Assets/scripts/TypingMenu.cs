@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 public class TypingMenu : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class TypingMenu : MonoBehaviour
         if (command == "play")
         {
             SceneManager.LoadScene("LevelDifficulty");
+        }
+        if (command == "settings")
+        {
+            SceneManager.LoadScene("settings");
         }
         else if (command == "exit")
         {

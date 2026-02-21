@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class TypingMenu : MonoBehaviour
+public class LevelDifficultySelection : MonoBehaviour
 {
     public TMP_InputField inputField;
 
@@ -18,14 +18,21 @@ public class TypingMenu : MonoBehaviour
     {
         string command = inputField.text.ToLower();
 
-        if (command == "play")
+        if (command == "basic")
         {
-            SceneManager.LoadScene("LevelDifficulty");
+            SceneManager.LoadScene("basic");
         }
-        else if (command == "exit")
+        if (command == "moderate")
         {
-            Application.Quit();
-            Debug.Log("Game Closed");
+            SceneManager.LoadScene("moderate");
+        }
+        if (command == "advanced")
+        {
+            SceneManager.LoadScene("advanced");
+        }
+        if (command == "conscientious")
+        {
+            SceneManager.LoadScene("conscientious");
         }
 
         inputField.text = "";

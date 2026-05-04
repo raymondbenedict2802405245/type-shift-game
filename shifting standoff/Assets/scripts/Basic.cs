@@ -13,6 +13,10 @@ public class Basic : MonoBehaviour
     [Header("Game Over")]
     public GameObject gameOverPanel;
 
+    [Header("Victory")]
+    public GameObject victoryPanel;
+    public int maxRound = 5;
+
     [Header("UI")]
     public TextMeshProUGUI playerHPText;
     public TextMeshProUGUI enemyHPText;
@@ -26,8 +30,8 @@ public class Basic : MonoBehaviour
     private float currentTime;
 
     private int currentRound = 1;
-
     private string currentWord;
+
     private List<string> wordList = new List<string>()
     {
         "apple",
@@ -46,6 +50,9 @@ public class Basic : MonoBehaviour
 
     void Update()
     {
+        // Stop semua logic kalau game sudah selesai
+        if (!inputField.interactable) return;
+
         TimerCountdown();
         CheckTyping();
     }
@@ -60,6 +67,7 @@ public class Basic : MonoBehaviour
 
         GenerateWord();
         inputField.text = "";
+        inputField.interactable = true;
         inputField.ActivateInputField();
     }
 
@@ -75,14 +83,14 @@ public class Basic : MonoBehaviour
     {
         string typed = inputField.text;
 
-        // Kalau salah huruf
+        // Salah huruf
         if (!currentWord.StartsWith(typed))
         {
             PlayerTakeDamage();
             inputField.text = "";
         }
 
-        // Kalau benar satu kata penuh
+        // Kata benar
         if (typed == currentWord)
         {
             EnemyTakeDamage();
@@ -105,15 +113,15 @@ public class Basic : MonoBehaviour
     }
 
     void PlayerTakeDamage()
-{
-    playerHP--;
-    UpdateUI();
-
-    if (playerHP <= 0)
     {
-        GameOver();
+        playerHP--;
+        UpdateUI();
+
+        if (playerHP <= 0)
+        {
+            GameOver();
+        }
     }
-}
 
     void EnemyTakeDamage()
     {
@@ -135,21 +143,39 @@ public class Basic : MonoBehaviour
     void NextRound()
     {
         currentRound++;
+
+        if (currentRound > maxRound)
+        {
+            Victory();
+            SceneManager.LoadScene("LevelDifficulty");
+        }
+
         Debug.Log("Next Round: " + currentRound);
         StartRound();
     }
+
     void GameOver()
-{
-    inputField.interactable = false;
+    {
+        inputField.interactable = false;
 
-    if (gameOverPanel != null)
-        gameOverPanel.SetActive(true);
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
 
-    Invoke("GoToMainMenu", 2f); // tunggu 2 detik
-}
+        Invoke("GoToMainMenu", 2f);
+    }
 
-void GoToMainMenu()
-{
-    SceneManager.LoadScene("MainMenu");
-}
+    void Victory()
+    {
+        inputField.interactable = false;
+
+        if (victoryPanel != null)
+            victoryPanel.SetActive(true);
+
+        Invoke("GoToMainMenu", 2f);
+    }
+
+    void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

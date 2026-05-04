@@ -18,6 +18,10 @@ public class LevelDifficultySelection : MonoBehaviour
     {
         string command = inputField.text.ToLower();
 
+        if (command == "tutorial")
+        {
+            SceneManager.LoadScene("tutorial");
+        }
         if (command == "basic")
         {
             SceneManager.LoadScene("basic");

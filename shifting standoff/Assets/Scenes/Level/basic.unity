@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: 3
-  enemyHP: 3
+  enemyHP: 20
   gameOverPanel: {fileID: 439458703}
+  victoryPanel: {fileID: 0}
+  maxRound: 5
   playerHPText: {fileID: 1003293465}
   enemyHPText: {fileID: 1218604535}
   wordText: {fileID: 304628252}

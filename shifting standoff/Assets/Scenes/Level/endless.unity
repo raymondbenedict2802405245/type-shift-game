@@ -666,6 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 580676708}
   - component: {fileID: 580676707}
+  - component: {fileID: 580676709}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -700,6 +701,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &580676709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580676706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86eb7f5df5dd94c448eb036eecacabbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 3
+  enemyHP: 20
+  gameOverPanel: {fileID: 439458703}
+  victoryPanel: {fileID: 0}
+  maxRound: 100
+  playerHPText: {fileID: 1003293465}
+  enemyHPText: {fileID: 1218604535}
+  wordText: {fileID: 304628252}
+  roundText: {fileID: 1277693816}
+  inputField: {fileID: 1771030026}
+  timerText: {fileID: 364193884}
+  timeLimit: 5
 --- !u!1 &679364037
 GameObject:
   m_ObjectHideFlags: 0

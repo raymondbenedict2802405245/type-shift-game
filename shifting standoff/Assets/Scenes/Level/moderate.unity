@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174819140}
   - component: {fileID: 174819141}
+  - component: {fileID: 174819142}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -164,8 +165,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHP: 3
+  enemyHP: 20
+  gameOverPanel: {fileID: 439458703}
+  victoryPanel: {fileID: 0}
+  maxRound: 5
+  playerHPText: {fileID: 1003293465}
+  enemyHPText: {fileID: 1218604535}
+  wordText: {fileID: 304628252}
+  roundText: {fileID: 1277693816}
+  inputField: {fileID: 1771030026}
+  timerText: {fileID: 364193884}
+  timeLimit: 5
+--- !u!114 &174819142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174819138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9caeaa39dac7c4f46a1c39b22505bd65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: 3
   enemyHP: 3
   gameOverPanel: {fileID: 439458703}
+  victoryPanel: {fileID: 0}
+  maxRound: 5
   playerHPText: {fileID: 1003293465}
   enemyHPText: {fileID: 1218604535}
   wordText: {fileID: 304628252}

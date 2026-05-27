@@ -32,6 +32,12 @@ public class advanced : MonoBehaviour
     private int currentRound = 1;
     private string currentWord;
 
+    
+    [SerializeField] public Animator animatorPlayer;
+    [SerializeField] public Animator animatorDummy;
+
+
+
     private List<string> wordList = new List<string>()
     {
         "apple",
@@ -113,7 +119,13 @@ public class advanced : MonoBehaviour
     }
 
     void PlayerTakeDamage()
-    {
+    {   animatorDummy.ResetTrigger("Attack");
+        animatorDummy.SetTrigger("Attack");
+        
+        animatorPlayer.ResetTrigger("TakeDmg");
+        animatorPlayer.SetTrigger("TakeDmg");
+
+        
         playerHP--;
         UpdateUI();
 
@@ -124,7 +136,12 @@ public class advanced : MonoBehaviour
     }
 
     void EnemyTakeDamage()
-    {
+    {   
+        animatorPlayer.ResetTrigger("Attack");
+        animatorPlayer.SetTrigger("Attack");
+        animatorDummy.ResetTrigger("TakeDmg");
+        animatorDummy.SetTrigger("TakeDmg");
+
         enemyHP--;
         UpdateUI();
 

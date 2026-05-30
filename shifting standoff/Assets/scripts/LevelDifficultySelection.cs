@@ -38,6 +38,10 @@ public class LevelDifficultySelection : MonoBehaviour
         {
             SceneManager.LoadScene("conscientious");
         }
+        if (command == "endless mode")
+        {
+            SceneManager.LoadScene("endless");
+        }
 
         inputField.text = "";
         inputField.ActivateInputField();

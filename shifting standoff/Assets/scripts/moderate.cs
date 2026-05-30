@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class moderate : MonoBehaviour
 {
     [Header("HP Settings")]
-    public int playerHP = 3;
-    public int enemyHP = 3;
+    public int playerHP = 10;
+    public int enemyHP = 10;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -32,16 +32,50 @@ public class moderate : MonoBehaviour
     private int currentRound = 1;
     private string currentWord;
 
-    private List<string> wordList = new List<string>()
-    {
-        "apple",
-        "banana",
-        "coffee",
-        "unity",
-        "keyboard",
-        "battle",
-        "dragon"
-    };
+private List<string> wordList = new List<string>()
+{
+    "Abate",
+    "Adjudicate",
+    "Assimilate",
+    "Remonstrate",
+    "Obey",
+    "Broadcast",
+    "Oppose",
+    "Participate",
+    "Promote",
+    "Report",
+    "Radiate",
+    "Scratch",
+    "Tear",
+    "Violate",
+    "Adroit",
+    "Amicable",
+    "Benevolent",
+    "Considerable",
+    "Biological",
+    "Balanced",
+    "Academic",
+    "Logical",
+    "Long-term",
+    "Magnificent",
+    "Miserable",
+    "Ridiculous",
+    "Romantic",
+    "Aberration",
+    "Abbreviation",
+    "Adversity",
+    "Apprehension",
+    "Connotation",
+    "Determination",
+    "Examination",
+    "Frequency",
+    "Greenhouse",
+    "Imagination",
+    "Institution",
+    "Kindergarten",
+    "Questionnaire"
+};
+
 
     void Start()
     {
@@ -59,8 +93,8 @@ public class moderate : MonoBehaviour
 
     void StartRound()
     {
-        playerHP = 3;
-        enemyHP = 3;
+        playerHP = 10;
+        enemyHP = 10;
 
         UpdateUI();
         roundText.text = "Round " + currentRound;

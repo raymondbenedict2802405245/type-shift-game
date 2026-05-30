@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class advanced : MonoBehaviour
 {
     [Header("HP Settings")]
-    public int playerHP = 3;
-    public int enemyHP = 3;
+    public int playerHP = 10;
+    public int enemyHP = 10;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -99,8 +99,8 @@ private List<string> wordList = new List<string>()
 
     void StartRound()
     {
-        playerHP = 3;
-        enemyHP = 3;
+        playerHP = 10;
+        enemyHP = 10;
 
         UpdateUI();
         roundText.text = "Round " + currentRound;

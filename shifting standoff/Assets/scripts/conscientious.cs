@@ -32,16 +32,49 @@ public class conscientious : MonoBehaviour
     private int currentRound = 1;
     private string currentWord;
 
-    private List<string> wordList = new List<string>()
-    {
-        "apple",
-        "banana",
-        "coffee",
-        "unity",
-        "keyboard",
-        "battle",
-        "dragon"
-    };
+private List<string> wordList = new List<string>()
+{
+    "Hippopotomonstrosesquippedaliophobia",
+    "Antidisestablishmentarianism",
+    "Pneumonoultramicroscopicsilicovolcanoconiosis",
+    "Supercalifragilisticexpialidocious",
+    "Pseudo-pseudohypoparathyroidism",
+    "Floccinaucinihilipilification",
+    "Spectrophotofluorometrically",
+    "Eellogofusciouhipoppokunurious",
+    "Disproportionableness",
+    "Counterrevolutionaries",
+    "Honorificabilitudinitatibus",
+    "Demisemihemidemisemiquaver",
+    "Cottonshopeburnfoot",
+    "Over-numerousness",
+    "Onomatopoeia",
+    "Un Feuilleton",
+    "Pococurante",
+    "Succedaneum",
+    "Chiaroscurist",
+    "Sacrilegious",
+    "Conscientious",
+    "Schmaltzy",
+    "Uncopyrightable",
+    "Dermatoglyphic",
+    "Cinematographic",
+    "Chromatographic",
+    "Spermatogenesis",
+    "Twyndyllyngs",
+    "Abstemiously",
+    "Affectionally",
+    "Fracedinously",
+    "Gads-preciously",
+    "Facetiously",
+    "Sub-dermatoglyphic",
+    "Scraunched",
+    "Euouae",
+    "Aegilops",
+    "Palindromic",
+    "Agglutinative"
+};
+
 
     void Start()
     {

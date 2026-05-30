@@ -38,16 +38,50 @@ public class advanced : MonoBehaviour
 
 
 
-    private List<string> wordList = new List<string>()
-    {
-        "apple",
-        "banana",
-        "coffee",
-        "unity",
-        "keyboard",
-        "battle",
-        "dragon"
-    };
+private List<string> wordList = new List<string>()
+{
+    "Contemplate",
+    "Differentiate",
+    "Exaggerate",
+    "Encompass",
+    "Endeavour",
+    "Facilitate",
+    "Terminate",
+    "Substitute",
+    "Prosecute",
+    "Maximize",
+    "Sacrifice",
+    "Provoke",
+    "Initiate",
+    "Heighten",
+    "Architectural",
+    "Agricultural",
+    "Bureaucratic",
+    "Corresponding",
+    "Forthcoming",
+    "Humanitarian",
+    "Long-standing",
+    "Nationwide",
+    "Organizational",
+    "Philosophical",
+    "Theoretical",
+    "Unconstitutional",
+    "Unprecedented",
+    "Abortion",
+    "Accomplishment",
+    "Governance",
+    "Incarceration",
+    "Justification",
+    "Mismanagement",
+    "Rehabilitation",
+    "Sovereignty",
+    "Vulnerability",
+    "Superintendent",
+    "Representation",
+    "Re-privatization",
+    "Infrastructure"
+};
+
 
     void Start()
     {

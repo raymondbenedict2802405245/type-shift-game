@@ -867,7 +867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Type...\n  -play\n  -settings\n  -quit"
+  m_Text: "Type...\n  -play\n  -quit"
 --- !u!222 &714322171
 CanvasRenderer:
   m_ObjectHideFlags: 0

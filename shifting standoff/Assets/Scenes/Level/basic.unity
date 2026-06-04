@@ -163,11 +163,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63433dca593586b41926d378b665bac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 20
-  enemyHP: 10
+  playerHP: 3
+  enemyHP: 20
   gameOverPanel: {fileID: 439458703}
   victoryPanel: {fileID: 0}
-  maxRound: 3
+  maxRound: 5
   playerHPText: {fileID: 1003293465}
   enemyHPText: {fileID: 1218604535}
   wordText: {fileID: 304628252}

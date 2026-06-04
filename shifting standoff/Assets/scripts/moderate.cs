@@ -7,15 +7,15 @@ using UnityEngine.SceneManagement;
 public class moderate : MonoBehaviour
 {
     [Header("HP Settings")]
-    public int playerHP = 15;
-    public int enemyHP = 7;
+    public int playerHP = 10;
+    public int enemyHP = 10;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
 
     [Header("Victory")]
     public GameObject victoryPanel;
-    public int maxRound = 3;
+    public int maxRound = 5;
 
     [Header("UI")]
     public TextMeshProUGUI playerHPText;
@@ -26,7 +26,7 @@ public class moderate : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     [Header("Timer")]
-    public float timeLimit = 6f;
+    public float timeLimit = 5f;
     private float currentTime;
 
     private int currentRound = 1;
@@ -93,8 +93,8 @@ private List<string> wordList = new List<string>()
 
     void StartRound()
     {
-        playerHP = 15;
-        enemyHP = 7;
+        playerHP = 10;
+        enemyHP = 10;
 
         UpdateUI();
         roundText.text = "Round " + currentRound;

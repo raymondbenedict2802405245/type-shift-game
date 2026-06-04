@@ -5,11 +5,7 @@ using TMPro;
 public class LevelDifficultySelection : MonoBehaviour
 {
     public TMP_InputField inputField;
-
-    void Start()
-    {
-        inputField.ActivateInputField();
-    }
+    private AudioManager audioManager;
 
     void Update()
     {
@@ -24,27 +20,27 @@ public class LevelDifficultySelection : MonoBehaviour
         string command = inputField.text.ToLower();
 
         if (command == "tutorial")
-        {
+        {   AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("tutorial");
         }
         if (command == "basic")
-        {
+        {   AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("basic");
         }
         if (command == "moderate")
-        {
+        {   AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("moderate");
         }
         if (command == "advanced")
-        {
+        {   AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("advanced");
         }
         if (command == "conscientious")
-        {
+        {   AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("conscientious");
         }
         if (command == "endless mode")
-        {
+        {   AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("endless");
         }
 

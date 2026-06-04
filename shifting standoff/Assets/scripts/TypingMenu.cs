@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UI;
 
 public class TypingMenu : MonoBehaviour
 {
     public TMP_InputField inputField;
+
+    void Start()
+    {
+        // Fokus langsung ke input field saat scene mulai
+        inputField.ActivateInputField();
+    }
 
     void Update()
     {
@@ -23,16 +28,17 @@ public class TypingMenu : MonoBehaviour
         {
             SceneManager.LoadScene("LevelDifficulty");
         }
-        if (command == "settings")
+        else if (command == "settings")
         {
             SceneManager.LoadScene("settings");
         }
-        else if (command == "exit")
+        else if (command == "quit")
         {
             Application.Quit();
             Debug.Log("Game Closed");
         }
 
+        // Reset dan tetap fokus ke input field
         inputField.text = "";
         inputField.ActivateInputField();
     }

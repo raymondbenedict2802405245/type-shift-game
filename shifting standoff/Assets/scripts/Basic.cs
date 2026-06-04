@@ -8,14 +8,14 @@ public class Basic : MonoBehaviour
 {
     [Header("HP Settings")]
     public int playerHP = 10;
-    public int enemyHP = 10;
+    public int enemyHP = 5;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
 
     [Header("Victory")]
     public GameObject victoryPanel;
-    public int maxRound = 5;
+    public int maxRound = 3;
 
     [Header("UI")]
     public TextMeshProUGUI playerHPText;
@@ -93,7 +93,7 @@ public class Basic : MonoBehaviour
     void StartRound()
     {
         playerHP = 10;
-        enemyHP = 10;
+        enemyHP = 5;
 
         UpdateUI();
         roundText.text = "Round " + currentRound;

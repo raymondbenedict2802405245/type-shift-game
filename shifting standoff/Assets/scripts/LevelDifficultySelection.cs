@@ -6,6 +6,11 @@ public class LevelDifficultySelection : MonoBehaviour
 {
     public TMP_InputField inputField;
 
+    void Start()
+    {
+        inputField.ActivateInputField();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))

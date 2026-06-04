@@ -8,7 +8,15 @@ public class advanced : MonoBehaviour
 {
     [Header("HP Settings")]
     public int playerHP = 10;
+    public int playerHearts = 10;
     public int enemyHP = 10;
+
+    public int enemyHearts = 10; 
+
+    public Image[] heartsPlayer;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -95,6 +103,28 @@ private List<string> wordList = new List<string>()
 
         TimerCountdown();
         CheckTyping();
+
+        for (int i = 0; i< heartsPlayer.Length; i++)
+        {   if(i < playerHP)
+            {
+                heartsPlayer[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartsPlayer[i].sprite = emptyHeart;
+            }
+            
+            if(i < playerHearts)
+            {
+                heartsPlayer[i].enabled = true;
+            }
+            else
+            {
+                heartsPlayer[i].enabled = false;
+            }
+               
+        }
+
     }
 
     void StartRound()
@@ -173,6 +203,7 @@ private List<string> wordList = new List<string>()
     {   
         animatorPlayer.ResetTrigger("Attack");
         animatorPlayer.SetTrigger("Attack");
+
         animatorDummy.ResetTrigger("TakeDmg");
         animatorDummy.SetTrigger("TakeDmg");
 

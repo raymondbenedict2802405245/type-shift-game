@@ -8,7 +8,15 @@ public class endlessMode : MonoBehaviour
 {
     [Header("HP Settings")]
     public int playerHP = 3;
+    public int playerHearts = 3;
     public int enemyHP = 3;
+    public int enemyHearts = 3; 
+
+
+    public Image[] heartsPlayer;
+    public Image[] heartsEnemy;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -32,11 +40,20 @@ public class endlessMode : MonoBehaviour
     private int currentRound = 1;
     private string currentWord;
 
+    [SerializeField] public Animator animatorPlayer;
+    [SerializeField] public Animator animatorDummy;
+    private AudioManager audioManager;
+
     private List<string> wordList;
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
         wordList = new List<string>(JSONLoader.database.Keys);
+        AudioManager.instance.playgameBGM();
         
         StartRound();
     }
@@ -48,6 +65,50 @@ public class endlessMode : MonoBehaviour
 
         TimerCountdown();
         CheckTyping();
+
+
+        for (int i = 0; i< heartsPlayer.Length; i++)
+        {   if(i < playerHP)
+            {
+                heartsPlayer[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartsPlayer[i].sprite = emptyHeart;
+            }
+            
+            if(i < playerHearts)
+            {
+                heartsPlayer[i].enabled = true;
+            }
+            else
+            {
+                heartsPlayer[i].enabled = false;
+            }
+               
+        }
+
+    
+        for (int i = 0; i< heartsEnemy.Length; i++)
+        {   if(i < enemyHP)
+            {
+                heartsEnemy[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartsEnemy[i].sprite = emptyHeart;
+            }
+            
+            if(i < enemyHearts)
+            {
+                heartsEnemy[i].enabled = true;
+            }
+            else
+            {
+                heartsEnemy[i].enabled = false;
+            }
+               
+        }
     }
 
     void StartRound()
@@ -107,6 +168,14 @@ public class endlessMode : MonoBehaviour
 
     void PlayerTakeDamage()
     {
+        animatorDummy.ResetTrigger("Attack");
+        audioManager.playGunshot();
+        animatorDummy.SetTrigger("Attack");
+        
+        animatorPlayer.ResetTrigger("TakeDmg");
+        animatorPlayer.SetTrigger("TakeDmg");
+        audioManager.playerDmg();
+
         playerHP--;
         UpdateUI();
 
@@ -118,6 +187,14 @@ public class endlessMode : MonoBehaviour
 
     void EnemyTakeDamage()
     {
+        animatorPlayer.ResetTrigger("Attack");
+        audioManager.playGunshot();
+        animatorPlayer.SetTrigger("Attack");
+
+        animatorDummy.ResetTrigger("TakeDmg");
+        animatorDummy.SetTrigger("TakeDmg");
+        audioManager.enemyDmg();
+
         enemyHP--;
         UpdateUI();
 
@@ -140,6 +217,7 @@ public class endlessMode : MonoBehaviour
         if (currentRound > maxRound)
         {
             Victory();
+            AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("LevelDifficulty");
         }
 
@@ -168,7 +246,8 @@ public class endlessMode : MonoBehaviour
     }
 
     void GoToMainMenu()
-    {
+    {   
+        AudioManager.instance.stopgameBGM();
         SceneManager.LoadScene("MainMenu");
     }
 }

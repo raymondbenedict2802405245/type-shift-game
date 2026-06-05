@@ -14,8 +14,11 @@ public class advanced : MonoBehaviour
     public int enemyHearts = 10; 
 
     public Image[] heartsPlayer;
+    public Image[] heartsEnemy;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+
+
 
 
     [Header("Game Over")]
@@ -43,7 +46,7 @@ public class advanced : MonoBehaviour
     
     [SerializeField] public Animator animatorPlayer;
     [SerializeField] public Animator animatorDummy;
-
+    private AudioManager audioManager;
 
 
 private List<string> wordList = new List<string>()
@@ -90,10 +93,14 @@ private List<string> wordList = new List<string>()
     "Infrastructure"
 };
 
-
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
     void Start()
     {
         StartRound();
+        AudioManager.instance.playgameBGM();
     }
 
     void Update()
@@ -121,6 +128,28 @@ private List<string> wordList = new List<string>()
             else
             {
                 heartsPlayer[i].enabled = false;
+            }
+               
+        }
+
+    
+        for (int i = 0; i< heartsEnemy.Length; i++)
+        {   if(i < enemyHP)
+            {
+                heartsEnemy[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartsEnemy[i].sprite = emptyHeart;
+            }
+            
+            if(i < enemyHearts)
+            {
+                heartsEnemy[i].enabled = true;
+            }
+            else
+            {
+                heartsEnemy[i].enabled = false;
             }
                
         }
@@ -162,7 +191,8 @@ private List<string> wordList = new List<string>()
 
         // Kata benar
         if (typed == currentWord)
-        {
+        {   
+
             EnemyTakeDamage();
             inputField.text = "";
             GenerateWord();
@@ -183,11 +213,14 @@ private List<string> wordList = new List<string>()
     }
 
     void PlayerTakeDamage()
-    {   animatorDummy.ResetTrigger("Attack");
+    {  
+        animatorDummy.ResetTrigger("Attack");
+        audioManager.playGunshot();
         animatorDummy.SetTrigger("Attack");
         
         animatorPlayer.ResetTrigger("TakeDmg");
         animatorPlayer.SetTrigger("TakeDmg");
+        audioManager.playerDmg();
 
         
         playerHP--;
@@ -202,10 +235,12 @@ private List<string> wordList = new List<string>()
     void EnemyTakeDamage()
     {   
         animatorPlayer.ResetTrigger("Attack");
+        audioManager.playGunshot();
         animatorPlayer.SetTrigger("Attack");
 
         animatorDummy.ResetTrigger("TakeDmg");
         animatorDummy.SetTrigger("TakeDmg");
+        audioManager.enemyDmg();
 
         enemyHP--;
         UpdateUI();
@@ -229,6 +264,7 @@ private List<string> wordList = new List<string>()
         if (currentRound > maxRound)
         {
             Victory();
+            AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("LevelDifficulty");
         }
 
@@ -257,7 +293,8 @@ private List<string> wordList = new List<string>()
     }
 
     void GoToMainMenu()
-    {
+    {   
+        AudioManager.instance.stopgameBGM();
         SceneManager.LoadScene("MainMenu");
     }
 }

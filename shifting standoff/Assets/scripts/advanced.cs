@@ -213,7 +213,8 @@ private List<string> wordList = new List<string>()
     }
 
     void PlayerTakeDamage()
-    {   animatorDummy.ResetTrigger("Attack");
+    {  
+        animatorDummy.ResetTrigger("Attack");
         audioManager.playGunshot();
         animatorDummy.SetTrigger("Attack");
         
@@ -263,6 +264,7 @@ private List<string> wordList = new List<string>()
         if (currentRound > maxRound)
         {
             Victory();
+            AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("LevelDifficulty");
         }
 

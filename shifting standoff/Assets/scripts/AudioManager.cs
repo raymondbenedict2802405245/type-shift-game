@@ -46,7 +46,6 @@ public class AudioManager : MonoBehaviour
         BGM.Stop();
     }
     
-    
     public void playGunshot()
     {
         if (isGameOver) return;

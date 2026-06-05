@@ -8,7 +8,18 @@ public class Basic : MonoBehaviour
 {
     [Header("HP Settings")]
     public int playerHP = 10;
+    public int playerHearts = 10;
     public int enemyHP = 10;
+
+    public int enemyHearts = 10; 
+
+
+    public Image[] heartsPlayer;
+    public Image[] heartsEnemy;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -31,6 +42,11 @@ public class Basic : MonoBehaviour
 
     private int currentRound = 1;
     private string currentWord;
+
+    [SerializeField] public Animator animatorPlayer;
+    [SerializeField] public Animator animatorDummy;
+    private AudioManager audioManager;
+
 
     private List<string> wordList = new List<string>()
     {
@@ -76,9 +92,14 @@ public class Basic : MonoBehaviour
         "Food"
     };
 
+    public void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
     void Start()
     {
         StartRound();
+        AudioManager.instance.playgameBGM();
     }
 
     void Update()
@@ -88,6 +109,49 @@ public class Basic : MonoBehaviour
 
         TimerCountdown();
         CheckTyping();
+
+        for (int i = 0; i< heartsPlayer.Length; i++)
+        {   if(i < playerHP)
+            {
+                heartsPlayer[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartsPlayer[i].sprite = emptyHeart;
+            }
+            
+            if(i < playerHearts)
+            {
+                heartsPlayer[i].enabled = true;
+            }
+            else
+            {
+                heartsPlayer[i].enabled = false;
+            }
+               
+        }
+
+    
+        for (int i = 0; i< heartsEnemy.Length; i++)
+        {   if(i < enemyHP)
+            {
+                heartsEnemy[i].sprite = fullHeart;
+            }
+            else
+            {
+                heartsEnemy[i].sprite = emptyHeart;
+            }
+            
+            if(i < enemyHearts)
+            {
+                heartsEnemy[i].enabled = true;
+            }
+            else
+            {
+                heartsEnemy[i].enabled = false;
+            }
+               
+        }
     }
 
     void StartRound()
@@ -146,7 +210,14 @@ public class Basic : MonoBehaviour
     }
 
     void PlayerTakeDamage()
-    {
+    {   animatorDummy.ResetTrigger("Attack");
+        audioManager.playGunshot();
+        animatorDummy.SetTrigger("Attack");
+        
+        animatorPlayer.ResetTrigger("TakeDmg");
+        animatorPlayer.SetTrigger("TakeDmg");
+        audioManager.playerDmg();
+
         playerHP--;
         UpdateUI();
 
@@ -157,7 +228,15 @@ public class Basic : MonoBehaviour
     }
 
     void EnemyTakeDamage()
-    {
+    {   
+        animatorPlayer.ResetTrigger("Attack");
+        audioManager.playGunshot();
+        animatorPlayer.SetTrigger("Attack");
+
+        animatorDummy.ResetTrigger("TakeDmg");
+        animatorDummy.SetTrigger("TakeDmg");
+        audioManager.enemyDmg();
+        
         enemyHP--;
         UpdateUI();
 
@@ -180,6 +259,7 @@ public class Basic : MonoBehaviour
         if (currentRound > maxRound)
         {
             Victory();
+            AudioManager.instance.stopgameBGM();
             SceneManager.LoadScene("LevelDifficulty");
         }
 
@@ -208,7 +288,8 @@ public class Basic : MonoBehaviour
     }
 
     void GoToMainMenu()
-    {
+    {   
+        AudioManager.instance.stopgameBGM();
         SceneManager.LoadScene("MainMenu");
     }
 }

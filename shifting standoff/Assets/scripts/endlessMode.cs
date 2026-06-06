@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class endlessMode : MonoBehaviour
 {
     [Header("HP Settings")]
-    public int playerHP = 3;
-    public int playerHearts = 3;
+    public int playerHP = 16;
+    public int playerHearts = 16;
     public int enemyHP = 3;
     public int enemyHearts = 3; 
 
@@ -113,7 +113,7 @@ public class endlessMode : MonoBehaviour
 
     void StartRound()
     {
-        playerHP = 3;
+        playerHP = 16;
         enemyHP = 3;
 
         UpdateUI();

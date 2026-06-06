@@ -24,7 +24,7 @@ public class conscientious : MonoBehaviour
 
     [Header("Victory")]
     public GameObject victoryPanel;
-    public int maxRound = 5;
+    public int maxRound = 3;
 
     [Header("UI")]
     public TextMeshProUGUI playerHPText;
@@ -153,8 +153,8 @@ private List<string> wordList = new List<string>()
 
     void StartRound()
     {
-        playerHP = 10;
-        enemyHP = 10;
+        playerHP = 16;
+        enemyHP = 4;
 
         UpdateUI();
         roundText.text = "Round " + currentRound;
